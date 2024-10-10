@@ -1,5 +1,7 @@
 from django.db import models
 from validators.validator import validate_alphanumeric
+from .validators import validate_file_size
+
 
 class BanerMain(models.Model):
     title = models.CharField(max_length=255, unique=True, validators=[validate_alphanumeric])
@@ -16,7 +18,7 @@ class BanerMain(models.Model):
 
 class BanerMainTopik(models.Model):
     
-    img = models.ImageField(upload_to="baner_main/%Y/%m/%d/")
+    img = models.ImageField(upload_to="baner_main/%Y/%m/%d/", validators=[validate_file_size])
     created_at = models.DateTimeField(auto_now_add=True)
 
 class BanerMiddle(models.Model):
@@ -33,7 +35,7 @@ class BanerMiddle(models.Model):
     
 class BanerBook(models.Model):
     title = models.CharField(max_length=255, unique=True, validators=[validate_alphanumeric])
-    img = models.ImageField(upload_to="baner_book/%Y/%m/%d/")
+    img = models.ImageField(upload_to="baner_book/%Y/%m/%d/", validators=[validate_file_size])
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
