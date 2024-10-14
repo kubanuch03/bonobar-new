@@ -4,7 +4,7 @@ from validators.validator import validate_alphanumeric
 
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True, validators=[validate_alphanumeric])
-    image = models.ImageField(upload_to="category_pictures/%Y/%m/%d/")
+    image = models.ImageField(blank=True, null=True,upload_to="category_pictures/%Y/%m/%d/")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
