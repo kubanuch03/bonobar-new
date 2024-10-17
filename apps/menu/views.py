@@ -17,7 +17,7 @@ CACHE_TIME = settings.CACHE_TIME
 
 
 class MenuListCreateAPIView(RequiredParamsMixin, APIView):
-    required_params = ['title', 'price', 'image', 'category', 'subcategory']
+    required_params = ['title', 'category', 'subcategory']
 
     @swagger_auto_schema(
         operation_description="Get a list of menus",
