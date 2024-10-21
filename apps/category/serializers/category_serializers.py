@@ -9,7 +9,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Category
-        fields = ('id', 'name', 'created_at',)
+        fields = ('id', 'name','image', 'created_at',)
 
     def validate_name(self, value):
         return validate_alphanumeric_and_symbols(value)

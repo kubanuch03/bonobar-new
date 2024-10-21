@@ -23,7 +23,7 @@ CACHE_TIME = settings.CACHE_TIME
 
 
 class CategoryListCreateAPIView(RequiredParamsMixin, APIView):
-    required_params = ['name']
+    required_params = ['name',]
 
     @swagger_auto_schema(
         operation_description="Retrieve a list of categories",
@@ -40,6 +40,7 @@ class CategoryListCreateAPIView(RequiredParamsMixin, APIView):
             type=openapi.TYPE_OBJECT,
             properties={
                 'name': openapi.Schema(type=openapi.TYPE_STRING, description='Category name'),
+                'image': openapi.Schema(type=openapi.TYPE_FILE, description='Category image')
             },
             required=['name']
         ),
@@ -82,6 +83,7 @@ class CategoryDetailAPIView(APIView):
             type=openapi.TYPE_OBJECT,
             properties={
                 'name': openapi.Schema(type=openapi.TYPE_STRING, description='Category name'),
+                'image': openapi.Schema(type=openapi.TYPE_FILE, description='Category image')
             },
         ),
         responses={200: CategorySerializer(), 400: "Bad request"}
